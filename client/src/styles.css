@@ -1,0 +1,236 @@
+/* =========================
+   Design Tokens
+========================= */
+:root {
+  --bg-app: #f8fafc;
+  --bg-page: #ffffff;
+  --bg-toolbar: #f1f5f9;
+
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+
+  --border: #e5e7eb;
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+  --transition-fast: 0.15s ease;
+  --transition: 0.25s ease;
+}
+
+/* =========================
+   Dark Mode
+========================= */
+.dark {
+  --bg-app: #0b1220;
+  --bg-page: #111827;
+  --bg-toolbar: #0f172a;
+
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --border: #1f2937;
+}
+
+/* =========================
+   Reset & Base
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-app);
+  color: var(--text-main);
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+/* =========================
+   Header
+========================= */
+.word-header {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.top-controls {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn,
+.zoom-select {
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.dark .btn,
+.dark .zoom-select {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+}
+
+/* =========================
+   Download Menu
+========================= */
+.download-menu {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-page);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  min-width: 220px;
+  z-index: 100;
+}
+
+.dark .download-menu {
+  background: #111827;
+}
+
+.download-item {
+  padding: 14px 16px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.dark .download-item {
+  color: #e5e7eb;
+}
+
+.download-item:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+
+/* =========================
+   Editor Shell
+========================= */
+.editor-shell {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.page-zoom-wrapper {
+  transform-origin: top center;
+  margin: 0 auto;
+}
+
+/* =========================
+   Page
+========================= */
+.page {
+  width: 860px;
+  min-height: 1122px;
+  background: var(--bg-page);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* 🔹 Dark mode page background */
+.dark .page {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+/* =========================
+   Quill
+========================= */
+.ql-toolbar {
+  background: var(--bg-toolbar);
+}
+
+/* ✅ MAIN FIX: editor text visibility */
+.ql-editor {
+  padding: 96px;
+  min-height: 1122px;
+  line-height: 1.75;
+  color: var(--text-main);
+}
+
+/* 🔹 Dark mode typed text */
+.dark .ql-editor {
+  color: #e5e7eb;
+}
+
+/* 🔹 Cursor visibility */
+.dark .ql-editor::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 Placeholder visibility */
+.dark .ql-editor.ql-blank::before {
+  color: #9ca3af;
+}
+
+/* =========================
+   Footer
+========================= */
+.page-indicator {
+  margin: 16px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   Print
+========================= */
+@media print {
+  .word-header,
+  .top-controls,
+  .page-indicator {
+    display: none;
+  }
+
+  .page {
+    border: none;
+  }
+
+  .ql-editor {
+    padding: 72px;
+  }
+}
+
+/* =========================
+   FIX: Dropdown Visibility
+========================= */
+.zoom-select option {
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.dark .zoom-select option {
+  color: #e5e7eb;
+  background: #111827;
+}
+
+.zoom-select:focus {
+  outline: none;
+}
+
+.download-item:active {
+  background: rgba(37, 99, 235, 0.2);
+}
